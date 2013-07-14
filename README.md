@@ -5,10 +5,10 @@ Usage
 -------------
 
 Run:
-    ./bin/robot
+  ./bin/robot
 
 Tests
 -------------
 
 Run:
-    rspec spec
+  rspec spec

@@ -2,10 +2,8 @@ class Board
   LIMIT = 4
 
   def place(*position)
-    return false unless position
-    pos_x, pos_y, facing = position
-    return false unless valid_position?(pos_x, pos_y)
-    self.current_position = pos_x, pos_y, facing
+    return false unless valid_position?(position)
+    self.current_position = position
     true
   end
 
@@ -15,8 +13,9 @@ class Board
 
   private
 
-  def valid_position?(pos_x, pos_y)
-    (0..LIMIT).include?(pos_x) && (0..LIMIT).include?(pos_y)
+  def valid_position?(position)
+    return false unless position
+    (0..LIMIT).include?(position[0]) && (0..LIMIT).include?(position[1])
   end
 
   def current_position=(current_position)

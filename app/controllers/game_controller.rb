@@ -13,13 +13,19 @@ class GameController
     elsif ["MOVE","LEFT","RIGHT"].include? command
       board.place(*robot.send(command.downcase, *board.report))
     elsif command == "REPORT"
-      if board.report.first.nil?
-        output.puts "ROBOT ISN'T PLACED"
-      else
-        output.puts "ROBOT POSITION: #{board.report.join(', ')}"
-      end
+      report
     else
       output.puts "UNKNOWN COMMAND"
+    end
+  end
+
+  private
+
+  def report
+    if board.report == [nil,nil,nil]
+      output.puts "ROBOT ISN'T PLACED"
+    else
+      output.puts "ROBOT POSITION: #{board.report.join(', ')}"
     end
   end
 end

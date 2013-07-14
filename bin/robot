@@ -9,7 +9,7 @@ game_controller = GameController.new robot, board
 puts "Welcome", "Type your first command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
 
 while(command = gets.chomp != 'QUIT')
-  game_controller.interpret_command(command)
+  game_controller.play(command)
   puts "Next command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
 end
 

@@ -22,6 +22,8 @@ class GameController
       else
         output.puts "ROBOT POSITION: #{board.report.join(', ')}"
       end
+    else
+      output.puts "UNKNOWN COMMAND"
     end
   end
 end

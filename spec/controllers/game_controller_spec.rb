@@ -107,6 +107,14 @@ describe GameController do
         end
       end
     end
+
+    context "when command is unknown" do
+      it "outputs a message" do
+        controller.play("A COMMAND")
+        output.seek(0)
+        output.read.should eq "UNKNOWN COMMAND\n"
+      end
+    end
   end
 end
 

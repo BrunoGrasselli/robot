@@ -52,7 +52,7 @@ describe GameController do
       end
 
       context "when command is REPORT" do
-        it "keeps the robot on the previous place if movement is invalid" do
+        it "keeps the robot on the previous place" do
           controller.play("REPORT")
           board.report.should eq [0,0,:NORTH]
         end
@@ -72,7 +72,7 @@ describe GameController do
           board.report.should eq [3,1,:NORTH]
         end
 
-        it "do nothing" do
+        it "do nothing if place is invalid" do
           controller.play("PLACE 10,1,NORTH")
           board.report.should eq [nil,nil,nil]
         end

@@ -10,12 +10,8 @@ class GameController
   def play(command)
     if command.match /^PLACE (\d+),(\d+),(NORTH|EAST|WEST|SOUTH)$/
       board.place $1.to_i, $2.to_i, $3.to_sym
-    elsif command == "MOVE"
-      board.place(*robot.move(*board.report))
-    elsif command == "LEFT"
-      board.place(*robot.left(*board.report))
-    elsif command == "RIGHT"
-      board.place(*robot.right(*board.report))
+    elsif ["MOVE","LEFT","RIGHT"].include? command
+      board.place(*robot.send(command.downcase, *board.report))
     elsif command == "REPORT"
       if board.report.first.nil?
         output.puts "ROBOT ISN'T PLACED"

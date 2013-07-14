@@ -17,7 +17,11 @@ class GameController
     elsif command == "RIGHT"
       board.place(*robot.right(*board.report))
     elsif command == "REPORT"
-      output.puts "ROBOT POSITION: #{board.report.join(', ')}"
+      if board.report.first.nil?
+        output.puts "ROBOT ISN'T PLACED"
+      else
+        output.puts "ROBOT POSITION: #{board.report.join(', ')}"
+      end
     end
   end
 end

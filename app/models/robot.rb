@@ -1,5 +1,7 @@
 class Robot
   def move(pos_x, pos_y, facing)
+    return nil unless pos_x
+
     case facing
     when :NORTH
       pos_y += 1
@@ -15,6 +17,8 @@ class Robot
   end
 
   def left(pos_x, pos_y, facing)
+    return nil unless pos_x
+
     case facing
     when :NORTH
       facing = :WEST
@@ -30,6 +34,8 @@ class Robot
   end
 
   def right(pos_x, pos_y, facing)
+    return nil unless pos_x
+
     case facing
     when :NORTH
       facing = :EAST

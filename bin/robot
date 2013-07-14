@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require './config/boot'
+
+robot = Robot.new
+board = Board.new
+game_controller = GameController.new robot, board
+
+puts "Welcome", "Type your first command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
+
+while(command = gets.chomp != 'QUIT')
+  game_controller.interpret_command(command)
+  puts "Next command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
+end
+
+puts "Bye!"

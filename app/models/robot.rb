@@ -20,17 +20,13 @@ class Robot
 
   def left(pos_x, pos_y, facing)
     return nil unless pos_x
-
     facing = (FACES * 2)[FACES.index(facing) + 1]
-
     [pos_x, pos_y, facing]
   end
 
   def right(pos_x, pos_y, facing)
     return nil unless pos_x
-
     facing = FACES[FACES.index(facing) - 1]
-
     [pos_x, pos_y, facing]
   end
 end

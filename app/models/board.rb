@@ -3,9 +3,7 @@ class Board
 
   def place(pos_x, pos_y, facing)
     return false unless valid_position?(pos_x, pos_y)
-
     self.current_position = pos_x, pos_y, facing
-
     true
   end
 

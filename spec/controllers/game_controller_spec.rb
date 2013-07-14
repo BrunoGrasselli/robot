@@ -4,7 +4,8 @@ describe GameController do
   describe "#play" do
     let(:board)      { Board.new }
     let(:robot)      { Robot.new }
-    let(:controller) { described_class.new(robot, board) }
+    let(:output)     { StringIO.new }
+    let(:controller) { described_class.new(robot, board, output) }
 
     context "robot is placed" do
       before do
@@ -47,6 +48,19 @@ describe GameController do
         it "turns the robot" do
           controller.play("RIGHT")
           board.report.should eq [0,0,:EAST]
+        end
+      end
+
+      context "when command is REPORT" do
+        it "keeps the robot on the previous place if movement is invalid" do
+          controller.play("REPORT")
+          board.report.should eq [0,0,:NORTH]
+        end
+
+        it "outputs the robot position" do
+          controller.play("REPORT")
+          output.seek(0)
+          output.read.should eq "ROBOT POSITION: 0, 0, NORTH\n"
         end
       end
     end

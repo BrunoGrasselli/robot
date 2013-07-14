@@ -1,9 +1,10 @@
 class GameController
-  attr_accessor :board, :robot
+  attr_accessor :board, :robot, :output
 
-  def initialize(robot, board)
+  def initialize(robot, board, output=STDOUT)
     self.board = board
     self.robot = robot
+    self.output = output
   end
 
   def play(command)
@@ -15,6 +16,8 @@ class GameController
       board.place(*robot.left(*board.report))
     elsif command == "RIGHT"
       board.place(*robot.right(*board.report))
+    elsif command == "REPORT"
+      output.puts "ROBOT POSITION: #{board.report.join(', ')}"
     end
   end
 end

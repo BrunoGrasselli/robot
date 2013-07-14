@@ -8,9 +8,13 @@ game_controller = GameController.new robot, board
 
 puts "Welcome", "Type your first command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
 
-while(command = gets.chomp != 'QUIT')
+def quit_game
+  puts "Bye!"
+  exit
+end
+
+while(command = gets.chomp)
+  quit_game if command == "QUIT"
   game_controller.play(command)
   puts "Next command: (PLACE, MOVE, LEFT, RIGHT, REPORT)"
 end
-
-puts "Bye!"

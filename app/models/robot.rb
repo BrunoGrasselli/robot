@@ -13,4 +13,34 @@ class Robot
 
     [pos_x, pos_y, facing]
   end
+
+  def left(pos_x, pos_y, facing)
+    case facing
+    when :NORTH
+      facing = :WEST
+    when :WEST
+      facing = :SOUTH
+    when :SOUTH
+      facing = :EAST
+    when :EAST
+      facing = :NORTH
+    end
+
+    [pos_x, pos_y, facing]
+  end
+
+  def right(pos_x, pos_y, facing)
+    case facing
+    when :NORTH
+      facing = :EAST
+    when :WEST
+      facing = :NORTH
+    when :SOUTH
+      facing = :WEST
+    when :EAST
+      facing = :SOUTH
+    end
+
+    [pos_x, pos_y, facing]
+  end
 end

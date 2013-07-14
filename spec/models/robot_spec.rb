@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Robot do
   let(:robot) { described_class.new }
+
   describe "#move" do
     it "moves to north when robot is facing north" do
       robot.move(1,1,:NORTH).should eq [1,2,:NORTH]
@@ -17,6 +18,42 @@ describe Robot do
     
     it "moves to east when robot is facing east" do
       robot.move(2,3,:EAST).should eq [3,3,:EAST]
+    end
+  end
+
+  describe "#left" do
+    it "turns to west when robot is facing north" do
+      robot.left(1,1,:NORTH).should eq [1,1,:WEST]
+    end
+
+    it "turns to south when robot is facing west" do
+      robot.left(2,3,:WEST).should eq [2,3,:SOUTH]
+    end
+
+    it "turns to east when robot is facing south" do
+      robot.left(2,3,:SOUTH).should eq [2,3,:EAST]
+    end
+    
+    it "turns to north when robot is facing east" do
+      robot.left(2,3,:EAST).should eq [2,3,:NORTH]
+    end
+  end
+
+  describe "#right" do
+    it "turns to east when robot is facing north" do
+      robot.right(1,1,:NORTH).should eq [1,1,:EAST]
+    end
+
+    it "turns to south when robot is facing east" do
+      robot.right(2,3,:EAST).should eq [2,3,:SOUTH]
+    end
+
+    it "turns to west when robot is facing south" do
+      robot.right(2,3,:SOUTH).should eq [2,3,:WEST]
+    end
+    
+    it "turns to north when robot is facing west" do
+      robot.right(2,3,:WEST).should eq [2,3,:NORTH]
     end
   end
 end

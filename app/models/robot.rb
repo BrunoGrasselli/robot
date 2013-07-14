@@ -1,4 +1,6 @@
 class Robot
+  FACES = [:NORTH, :WEST, :SOUTH, :EAST]
+
   def move(pos_x, pos_y, facing)
     return nil unless pos_x
 
@@ -19,16 +21,7 @@ class Robot
   def left(pos_x, pos_y, facing)
     return nil unless pos_x
 
-    case facing
-    when :NORTH
-      facing = :WEST
-    when :WEST
-      facing = :SOUTH
-    when :SOUTH
-      facing = :EAST
-    when :EAST
-      facing = :NORTH
-    end
+    facing = (FACES * 2)[FACES.index(facing) + 1]
 
     [pos_x, pos_y, facing]
   end
@@ -36,16 +29,7 @@ class Robot
   def right(pos_x, pos_y, facing)
     return nil unless pos_x
 
-    case facing
-    when :NORTH
-      facing = :EAST
-    when :WEST
-      facing = :NORTH
-    when :SOUTH
-      facing = :WEST
-    when :EAST
-      facing = :SOUTH
-    end
+    facing = FACES[FACES.index(facing) - 1]
 
     [pos_x, pos_y, facing]
   end
